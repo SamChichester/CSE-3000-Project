@@ -40,4 +40,4 @@ def detect_gender(image_path):
 
 
 if __name__ == "__main__":
-    detect_gender('images/me.png')
+    detect_gender('images/img.png')
