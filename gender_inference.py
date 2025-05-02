@@ -1,6 +1,7 @@
 import requests
 import os
 from dotenv import load_dotenv
+from prompts import prompts
 
 load_dotenv()
 
@@ -40,10 +41,13 @@ def detect_gender(image_path):
 
 
 if __name__ == "__main__":
-    genders = []
+    for prompt in prompts:
+        genders = []
 
-    for num in range(50):
-        genders.append(detect_gender(f'images/{num}.png'))
+        for num in range(50):
+            genders.append(detect_gender(f'images/{prompt}/{num}.png'))
 
-    print(f"%MALE: {genders.count('Male') / len(genders)}")
-    print(f"%FEMALE: {genders.count('Female') / len(genders)}")
+        print(f"%MALE: {genders.count('Male') / len(genders)}")
+        print(f"%FEMALE: {genders.count('Female') / len(genders)}\n\n")
+
+    print('DONE')
