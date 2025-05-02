@@ -40,4 +40,10 @@ def detect_gender(image_path):
 
 
 if __name__ == "__main__":
-    detect_gender('images/img.png')
+    genders = []
+
+    for num in range(50):
+        genders.append(detect_gender(f'images/{num}.png'))
+
+    print(f"%MALE: {genders.count('Male') / len(genders)}")
+    print(f"%FEMALE: {genders.count('Female') / len(genders)}")

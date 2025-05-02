@@ -7,7 +7,7 @@ client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 load_dotenv()
 
 
-def generate_image(prompt):
+def generate_image(prompt, name):
     """
     
     Generate an image using DALL-E
@@ -21,7 +21,7 @@ def generate_image(prompt):
     print(f"Image URL: {image_url}")
 
     img_data = requests.get(image_url).content
-    image_path = "images/img.png"
+    image_path = f"images/{name}.png"
     with open(image_path, 'wb') as f:
         f.write(img_data)
 
@@ -30,4 +30,6 @@ def generate_image(prompt):
 
 if __name__ == "__main__":
     PROMPT = 'doctor'
-    generate_image(PROMPT)
+
+    for num in range(50):
+        generate_image(PROMPT, num)
